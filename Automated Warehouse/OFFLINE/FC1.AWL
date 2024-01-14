@@ -1,0 +1,156 @@
+//{{V2}}
+FUNCTION FC1
+TITLE= <Title of FC>
+
+
+AUTHOR:mh
+FAMILY:nb
+NAME:nb
+VERSION:1.0
+
+
+VAR_INPUT
+END_VAR
+
+VAR_OUTPUT
+END_VAR
+
+VAR_IN_OUT
+END_VAR
+
+VAR_TEMP
+END_VAR
+BEGIN
+
+NETWORK
+TITLE=   Start
+//{{k}}
+
+       A    I1.3  
+       A    I         1.4  
+       S    M100.0  
+       A(   
+       O    I         1.5  
+       O    I         1.6  
+       )    
+       R    M100.0  
+       A    M100.0  
+       =    M10.7  
+NETWORK
+TITLE=Edge
+//{{k}}
+
+       A    M        10.7
+       A    I         0.5
+       =    M        10.0
+       A    M        10.7
+       A    I         0.1
+       =    M        10.1
+       A    M        10.7
+       A    I         0.0
+       =    M        10.3
+NETWORK
+TITLE= 
+//{{k}}
+
+       A    M        10.7
+       A(   
+       AN   M        50.0
+       AN   M        50.1
+       A    I         2.0
+       O    M        50.0
+       )    
+       =    Q         0.0
+       A    M        10.7
+       A(   
+       A(   
+       AN   M        50.0
+       AN   M        50.1
+       A    I         2.1
+       O    M        50.0
+       )    
+       O    M        50.1
+       )    
+       =    Q         0.1
+       A    M        10.7
+       AN   M        50.0
+       AN   M        50.1
+       A    I         2.2
+       =    Q         0.2
+       A    M        10.7
+       A(   
+       AN   M        50.0
+       AN   M        50.1
+       A    I         2.3
+       O    M        50.1
+       )    
+       =    Q         0.3
+       A    M        10.7
+       A(   
+       AN   M        50.0
+       AN   M        50.1
+       A    I         2.4
+       O    M        50.0
+       )    
+       =    Q         0.4
+       A    M        10.7
+       A(   
+       AN   M        50.0
+       AN   M        50.1
+       A    I         2.5
+       O    M        50.0
+       )    
+       =    Q         0.5
+       A    M        10.5
+       AN   Q         0.0
+       A    Q         0.1
+       AN   Q         0.2
+       A    Q         0.3
+       =    M        10.2
+NETWORK
+TITLE=Fork move to monorail
+//{{k}}
+
+       A    M        10.7
+       A(   
+       AN   M        50.1
+       A(   
+       A    I         0.1
+       A    I         0.0
+       A    I         0.6
+       A    I         0.3
+       O    
+       AN   M        10.0
+       A    Q         0.6
+       )    
+       O    
+       A    M        50.1
+       AN   M        50.0
+       A(   
+       A    M        10.2
+       A    M        10.1
+       A    I         0.7
+       A    I         0.3
+       O    
+       AN   M        10.0
+       A    Q         0.6
+       )    
+//{{OR}}
+       )    
+       =    Q         0.6
+NETWORK
+TITLE=
+//{{k}}
+
+       A    M10.7
+       AN   M        50.1  
+       A(   
+       A    I         0.3  
+       AN   I         0.0  
+       A    M        10.1  
+       O    
+       A    M        10.0  
+       A    Q         0.7  
+       )    
+       =    Q0.7
+END_FUNCTION

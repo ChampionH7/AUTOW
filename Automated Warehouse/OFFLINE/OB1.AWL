@@ -1,0 +1,155 @@
+//{{V2}}
+ORGANIZATION_BLOCK OB1
+TITLE= "Cyclic main program"
+
+
+AUTHOR:nb
+FAMILY:nb
+NAME:nb
+VERSION:1.0
+
+
+VAR_TEMP
+       OB1_EV_CLASS:BYTE //Bits 0-3 = 1 (Coming event), Bits 4-7 = 1 (Event class 1)
+       OB1_SCAN_1:BYTE //1 (Cold restart scan 1 of OB 1), 3 (Scan 2-n of OB 1)
+       OB1_PRIORITY:BYTE //1 (Priority of 1 is lowest)
+       OB1_OB_NUMBR:BYTE //1 (Organization block 1, OB1)
+       OB1_RESERVED_1:BYTE //Reserved for system
+       OB1_RESERVED_2:BYTE //Reserved for system
+       OB1_PREV_CYCLE:INT //Cycle time of previous OB1 scan (milliseconds)
+       OB1_MIN_CYCLE:INT //Minimum cycle time of OB1 (milliseconds)
+       OB1_MAX_CYCLE:INT //Maximum cycle time of OB1 (milliseconds)
+       OB1_DATE_TIME:DATE_AND_TIME //Date and time OB1 started
+END_VAR
+BEGIN
+
+NETWORK
+TITLE=   Start
+//{{k}}
+
+       A    I1.3
+       A    I1.4
+       S    M100.0
+       A(   
+       ON   I1.5
+       O    I1.6
+       )    
+       R    M100.0
+       A    M100.0
+       =    M10.7
+NETWORK
+TITLE=Edge
+//{{k}}
+
+       A    M10.7
+       A    I0.5
+       =    M10.0
+       A    M10.7
+       A    I0.1
+       =    M10.1
+       A    M10.7
+       A    I0.0
+       =    M10.3
+NETWORK
+TITLE=
+//{{k}}
+
+       A    M10.7
+       A(   
+       AN   M50.0
+       AN   M50.1
+       A    I2.0
+       O    M50.0
+       )    
+       =    Q0.0
+       A    M10.7
+       A(   
+       A(   
+       AN   M50.0
+       AN   M50.1
+       A    I2.1
+       O    M50.0
+       )    
+       O    M50.1
+       )    
+       =    Q0.1
+       A    M10.7
+       AN   M50.0
+       AN   M50.1
+       A    I2.2
+       =    Q0.2
+       A    M10.7
+       A(   
+       AN   M50.0
+       AN   M50.1
+       A    I2.3
+       O    M50.1
+       )    
+       =    Q0.3
+       A    M10.7
+       A(   
+       AN   M50.0
+       AN   M50.1
+       A    I2.4
+       O    M50.0
+       )    
+       =    Q0.4
+       A    M10.7
+       A(   
+       AN   M50.0
+       AN   M50.1
+       A    I2.5
+       O    M50.0
+       )    
+       =    Q         0.5  
+       A    M        10.7
+       AN   Q         0.0  
+       A    Q         0.1  
+       AN   Q         0.2  
+       A    Q         0.3  
+       =    M10.2
+NETWORK
+TITLE=
+//{{k}}
+
+       A    M        10.7  
+       AN   M        50.1  
+       A(   
+       A    I0.1  
+       A    I         0.0  
+       A    I         0.6  
+       A    I         0.3
+       O    
+       AN   M        10.0  
+       A    Q         0.6  
+       )    
+       =    Q         0.6  
+       A    M        10.7  
+       A    M        50.1  
+       AN   M        50.0  
+       A(   
+       A    M10.2  
+       A    M        10.1  
+       A    I         0.7  
+       A    I         0.3  
+       O    
+       AN   M        10.0  
+       A    Q         0.6  
+       )    
+       =    Q         0.6  
+NETWORK
+TITLE= 
+//{{k}}
+
+       A    M10.7
+       AN   M50.1
+       A(   
+       A    I0.3
+       AN   I0.0
+       A    M10.1
+       O    
+       A    M10.0
+       A    Q0.7
+       )    
+       =    Q0.7
+END_ORGANIZATION_BLOCK

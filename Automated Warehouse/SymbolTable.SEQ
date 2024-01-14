@@ -1,0 +1,32 @@
+Auto	I    1.3	BOOL	
+Stop	I    1.5	BOOL	
+Reset	I    1.6	BOOL	
+FlipFlop	M  100.0	BOOL	
+P	M   10.7	BOOL	
+Elevator Automatic Move	I    0.5	BOOL	
+Edge I0.5	M   10.0	BOOL	
+Transelevator End Move	I    0.1	BOOL	
+Edge I0.1	M   10.1	BOOL	
+Entry P Transelevator ss	I    0.0	BOOL	
+Edge I0.3	M   10.3	BOOL	
+Store	M   50.0	BOOL	
+Retrieve	M   50.1	BOOL	
+Pos1	I    2.0	BOOL	
+Pos2	I    2.1	BOOL	
+Bit0	Q    0.0	BOOL	
+Bit1	Q    0.1	BOOL	
+Pos3	I    2.2	BOOL	
+Bit2	Q    0.2	BOOL	
+Pos4	I    2.3	BOOL	
+Bit3	Q    0.3	BOOL	
+Pos5	I    2.4	BOOL	
+Bit4	Q    0.4	BOOL	
+Pos6	I    2.5	BOOL	
+Bit5	Q    0.5	BOOL	
+Exit	M   10.2	BOOL	
+Entry point monorail	I    0.6	BOOL	
+Central position fork	I    0.3	BOOL	
+Forks move to monorail	Q    0.6	BOOL	
+Forks move to rack	Q    0.7	BOOL	
+Exit point monorail	I    0.7	BOOL	
+Start	I    1.4	BOOL	
